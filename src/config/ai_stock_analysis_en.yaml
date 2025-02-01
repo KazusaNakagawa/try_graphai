@@ -1,0 +1,67 @@
+name: AI Stock Analysis
+description: Analyzes AI-related stocks and provides investment insights
+metadata:
+  model: gpt-4o-mini
+  version: "1.0"
+  date: "2025/01/18"
+
+companies:
+  - name: NVIDIA
+    ticker: NVDA
+    source: https://finance.yahoo.com/quote/NVDA
+  # - name: Microsoft
+  #   ticker: MSFT
+  #   source: https://finance.yahoo.com/quote/MSFT
+  # - name: Google
+  #   ticker: GOOGL
+  #   source: https://finance.yahoo.com/quote/GOOGL
+  # - name: Meta
+  #   ticker: META
+  #   source: https://finance.yahoo.com/quote/META
+  - name: Palantir Technologies
+    ticker: PLTR
+    source: https://finance.yahoo.com/quote/PLTR
+  - name: Rocket Lab
+    ticker: RKLB
+    source: https://finance.yahoo.com/quote/RKLB
+  # - name: First Solar
+  #   ticker: FSLR
+  #   source: https://finance.yahoo.com/quote/FSLR
+  - name: Cloudflare
+    ticker: NET
+    source: https://finance.yahoo.com/quote/NET
+  # - name: MongoDB
+  #   ticker: MDB
+  #   source: https://finance.yahoo.com/quote/MDB
+  # - name: Snowflake
+  #   ticker: SNOW
+  #   source: https://finance.yahoo.com/quote/SNOW
+  # - name: Unity Software
+  #   ticker: U
+  #   source: https://finance.yahoo.com/quote/U
+
+analysis_points:
+  financial_metrics:
+    - revenue_growth
+    - profit_margins
+    - r_and_d_investment
+    - ai_related_revenue
+  market_position:
+    - market_share
+    - competitive_advantages
+    - partnerships
+  technology:
+    - ai_patents
+    - product_pipeline
+    - research_publications
+  sentiment:
+    - news_sentiment
+    - social_media_mentions
+    - analyst_ratings
+
+output_format:
+  - company_overview
+  - financial_analysis
+  - technical_analysis
+  - risk_assessment
+  - investment_recommendation
