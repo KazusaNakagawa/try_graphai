@@ -9,36 +9,36 @@ companies:
   - name: NVIDIA
     ticker: NVDA
     source: https://finance.yahoo.com/quote/NVDA
-  # - name: Microsoft
-  #   ticker: MSFT
-  #   source: https://finance.yahoo.com/quote/MSFT
-  # - name: Google
-  #   ticker: GOOGL
-  #   source: https://finance.yahoo.com/quote/GOOGL
-  # - name: Meta
-  #   ticker: META
-  #   source: https://finance.yahoo.com/quote/META
+  - name: Microsoft
+    ticker: MSFT
+    source: https://finance.yahoo.com/quote/MSFT
+  - name: Google
+    ticker: GOOGL
+    source: https://finance.yahoo.com/quote/GOOGL
+  - name: Meta
+    ticker: META
+    source: https://finance.yahoo.com/quote/META
   - name: Palantir Technologies
     ticker: PLTR
     source: https://finance.yahoo.com/quote/PLTR
   - name: Rocket Lab
     ticker: RKLB
     source: https://finance.yahoo.com/quote/RKLB
-  # - name: First Solar
-  #   ticker: FSLR
-  #   source: https://finance.yahoo.com/quote/FSLR
+  - name: First Solar
+    ticker: FSLR
+    source: https://finance.yahoo.com/quote/FSLR
   - name: Cloudflare
     ticker: NET
     source: https://finance.yahoo.com/quote/NET
-  # - name: MongoDB
-  #   ticker: MDB
-  #   source: https://finance.yahoo.com/quote/MDB
-  # - name: Snowflake
-  #   ticker: SNOW
-  #   source: https://finance.yahoo.com/quote/SNOW
-  # - name: Unity Software
-  #   ticker: U
-  #   source: https://finance.yahoo.com/quote/U
+  - name: MongoDB
+    ticker: MDB
+    source: https://finance.yahoo.com/quote/MDB
+  - name: Snowflake
+    ticker: SNOW
+    source: https://finance.yahoo.com/quote/SNOW
+  - name: Unity Software
+    ticker: U
+    source: https://finance.yahoo.com/quote/U
 
 analysis_points:
   financial_metrics:
