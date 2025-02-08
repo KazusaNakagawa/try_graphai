@@ -51,7 +51,7 @@ npm run build
 
 ## Configuration Files
 
-The analysis targets and parameters can be configured in YAML files located in the `src/config` directory:
+The tool supports both English and Japanese configurations:
 
 - `ai_stock_analysis_en.yaml`: English configuration
 - `ai_stock_analysis.yaml`: Japanese configuration
@@ -66,6 +66,7 @@ companies:
     ticker: "TICKER"
     source: "https://finance.yahoo.com/quote/TICKER"
 ```
+
 
 ## Analysis Points
 
@@ -86,6 +87,13 @@ Analysis results are saved in the `output` directory with timestamps, containing
 - Risk assessment
 - Investment recommendations
 
+## Running Specific Commands
+
+```bash
+npx ts-node index.ts analyze
+npx ts-node index.ts web-display
+```
+
 ## Technical Stack
 
 - TypeScript
@@ -96,14 +104,31 @@ Analysis results are saved in the `output` directory with timestamps, containing
 
 ## Project Structure
 
-```
+```bash
 .
-├── src/
-│   ├── index.ts          # Main application logic
-│   └── config/           # Configuration files
-├── output/               # Generated analysis reports
-├── package.json          # Project dependencies
-└── tsconfig.json         # TypeScript configuration
+├── README.md                      
+├── agents                         # Directory for analysis agents
+│   ├── analysis.ts                
+│   ├── prompt                     
+│   └── types.ts                   
+├── commands                       # Directory for CLI commands
+│   ├── analyzeCommand.ts          
+│   └── webDisplayCommand.ts       
+├── config                         # Configuration files
+│   ├── ai_stock_analysis.yaml     
+│   ├── ai_stock_analysis_en.yaml  
+│   └── view_companies.yaml        
+├── index.ts                       # Entry point for the application
+├── next-env.d.ts                  
+├── output                         # Directory for analysis output
+│   └── ...                        
+├── package.json                   
+├── src                            # Source directory for the application
+│   ├── components                 
+│   ├── pages                      
+│   └── styles                     
+├── tsconfig.json                  
+└── yarn.lock                      
 ```
 
 ## License
