@@ -39,6 +39,15 @@ companies:
   - name: Unity Software
     ticker: U
     source: https://finance.yahoo.com/quote/U
+  - name: AI Tech Corp
+    ticker: ...
+    source: ...
+  - name: Data Systems Inc
+    ticker: ...
+    source: ...
+  - name: Solidus Ai Tech USD
+    ticker: AITECH-USD
+    source: https://finance.yahoo.com/quote/AITECH-USD
 
 analysis_points:
   financial_metrics:
