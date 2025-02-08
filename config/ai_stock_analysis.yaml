@@ -1,0 +1,63 @@
+companies:
+  - name: NVIDIA
+    ticker: NVDA
+    source: https://finance.yahoo.com/quote/NVDA
+  - name: Microsoft
+    ticker: MSFT
+    source: https://finance.yahoo.com/quote/MSFT
+  - name: Google
+    ticker: GOOGL
+    source: https://finance.yahoo.com/quote/GOOGL
+  - name: Meta
+    ticker: META
+    source: https://finance.yahoo.com/quote/META
+  - name: Palantir Technologies
+    ticker: PLTR
+    source: https://finance.yahoo.com/quote/PLTR
+  - name: Rocket Lab
+    ticker: RKLB
+    source: https://finance.yahoo.com/quote/RKLB
+  - name: First Solar
+    ticker: FSLR
+    source: https://finance.yahoo.com/quote/FSLR
+  - name: Cloudflare
+    ticker: NET
+    source: https://finance.yahoo.com/quote/NET
+  - name: MongoDB
+    ticker: MDB
+    source: https://finance.yahoo.com/quote/MDB
+  - name: Snowflake
+    ticker: SNOW
+    source: https://finance.yahoo.com/quote/SNOW
+  - name: Unity Software
+    ticker: U
+    source: https://finance.yahoo.com/quote/U
+  - name: AI Tech Corp
+    ticker: ...
+    source: ...
+  - name: Data Systems Inc
+    ticker: ...
+    source: ...
+  - name: Solidus Ai Tech USD
+    ticker: AITECH-USD
+    source: https://finance.yahoo.com/quote/AITECH-USD
+
+analysis_points:
+  financial_metrics:
+    - "収益成長率"
+    - "営業利益率"
+    - "ROE"
+  market_position:
+    - "市場シェア"
+    - "競争優位性"
+  technology:
+    - "研究開発投資"
+    - "特許ポートフォリオ"
+  sentiment:
+    - "アナリスト評価"
+    - "SNSでの評判"
+
+metadata:
+  model: "gpt-4o-mini"
+  version: "1.0"
+  date: "2025/01/23"

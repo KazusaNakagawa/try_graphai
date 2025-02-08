@@ -6,7 +6,7 @@ import { companyRegex } from '../../components/companyRegex';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const outputDir = path.join(process.cwd(), 'src', 'output');
+    const outputDir = path.join(process.cwd(), 'output');
     const files = fs.readdirSync(outputDir);
 
     // .md ファイルだけ取得
@@ -17,7 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(404).json({ error: '分析結果が見つかりません' });
     }
 
-    const _companyRegex = companyRegex(['src', 'config'], 'ai_stock_analysis_en.yaml');
+    const _companyRegex = companyRegex(['config'], 'view_companies.yaml');
     // 各ファイルにつき1回だけ解析
     const results = mdFiles.map(file => {
       const content = fs.readFileSync(path.join(outputDir, file), 'utf-8');
