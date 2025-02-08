@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as yaml from 'js-yaml';
+import { companyRegex } from '../../components/companyRegex';
+
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
@@ -16,18 +17,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(404).json({ error: '分析結果が見つかりません' });
     }
 
-    // AI が出力した結果を読み込み正規表現で企業名を抽出
-    const yamlFilePath = path.join(process.cwd(), 'src', 'config', 'ai_stock_analysis_en.yaml');
-    const yamlContent = fs.readFileSync(yamlFilePath, 'utf8');
-    const config = yaml.load(yamlContent) as { companies: { name: string }[] };
-
-    const companyNames = config.companies.map(company => company.name).join('|');
-    const companyRegex = new RegExp(companyNames);
-
+    const _companyRegex = companyRegex(['src', 'config'], 'ai_stock_analysis_en.yaml');
     // 各ファイルにつき1回だけ解析
     const results = mdFiles.map(file => {
       const content = fs.readFileSync(path.join(outputDir, file), 'utf-8');
-      const companyMatch = companyRegex.exec(content);
+      const companyMatch = _companyRegex.exec(content);
 
       // ファイルごとにレコードを1つだけ作る
       return {
