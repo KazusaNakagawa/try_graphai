@@ -116,8 +116,7 @@ npx ts-node index.ts web-display
 │   └── webDisplayCommand.ts       
 ├── config                         # Configuration files
 │   ├── ai_stock_analysis.yaml     
-│   ├── ai_stock_analysis_en.yaml  
-│   └── view_companies.yaml        
+│   └── ai_stock_analysis_en.yaml  
 ├── index.ts                       # Entry point for the application
 ├── next-env.d.ts                  
 ├── output                         # Directory for analysis output
