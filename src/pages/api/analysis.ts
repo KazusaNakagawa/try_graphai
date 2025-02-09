@@ -7,12 +7,12 @@ function getFiles(outputDir: string, extension: string): string[] {
   const files = fs.readdirSync(outputDir);
   const targetFiles = files.filter(file => file.endsWith(extension));
   console.log('file_num', targetFiles.length);
-  if (mdFiles.length === 0) {
+  if (targetFiles.length === 0) {
     console.error('No markdown files found in output directory');
     return [];
   }
 
-  return mdFiles;
+  return targetFiles;
 }
   
 
