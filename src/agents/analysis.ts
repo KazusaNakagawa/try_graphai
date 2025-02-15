@@ -46,17 +46,16 @@ const createStockAnalysisGraph = (company: Company) => ({
   },
 });
 
-
 // メイン実行関数
 const main = async () => {
   const timestamp = new Date().toISOString().replace(/[-:]/g, '').slice(0,14);
-  const outputDir = `${__dirname}/../output`;
+  const outputDir = path.join(__dirname, "../output");
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
-  
+
   for (const company of config.companies) {
-    const outputPath = `${outputDir}/analysis_${company.name.toLowerCase()}_${timestamp}.md`;
+    const outputPath = path.join(outputDir, `analysis_${company.name.toLowerCase()}_${timestamp}.md`);
     const writeStream = fs.createWriteStream(outputPath, { flags: 'w' });
 
     console.log(`Analyzing ${company.name}...`);

@@ -1,8 +1,7 @@
-import { Box, Container, Heading, VStack, Text, useToast, Grid, GridItem, List, ListItem, Link } from '@chakra-ui/react';
-import { ChevronRightIcon } from '@chakra-ui/icons';
+import { Container, Heading, Grid, GridItem, useToast } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import Sidebar from '../components/Sidebar';
+import MainContent from '../components/MainContent';
 
 interface AnalysisResult {
   company: string;
@@ -44,62 +43,16 @@ export default function Home() {
       </Heading>
 
       <Grid templateColumns="250px 1fr" gap={8}>
-        {/* サイドバー */}
         <GridItem>
-          <Box
-            position="sticky"
-            top="20px"
-            borderWidth="1px"
-            borderRadius="lg"
-            p={4}
-          >
-            <Heading as="h2" size="md" mb={4}>
-              分析企業一覧
-            </Heading>
-            <List spacing={3}>
-              {results.map((result, index) => (
-                <ListItem
-                  key={result.company}
-                  cursor="pointer"
-                  onClick={() => setSelectedCompany(result.company)}
-                  bg={selectedCompany === result.company ? 'gray.100' : 'transparent'}
-                  p={2}
-                  borderRadius="md"
-                  _hover={{ bg: 'gray.50' }}
-                >
-                  <Link display="flex" alignItems="center" onClick={(e) => {
-                    e.preventDefault();
-                    setSelectedCompany(result.company);
-                  }}>
-                    <Text fontWeight="bold" mr={2}>
-                      {index + 1}.
-                    </Text>
-                    <ChevronRightIcon mr={2} />
-                    {result.company}
-                  </Link>
-                </ListItem>
-              ))}
-            </List>
-          </Box>
+          <Sidebar
+            results={results}
+            selectedCompany={selectedCompany}
+            setSelectedCompany={setSelectedCompany}
+          />
         </GridItem>
 
-        {/* メインコンテンツ */}
         <GridItem>
-          {selectedResult && (
-            <Box
-              p={6}
-              borderWidth="1px"
-              borderRadius="lg"
-              boxShadow="md"
-            >
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                className="markdown-content"
-              >
-                {selectedResult.recommendation}
-              </ReactMarkdown>
-            </Box>
-          )}
+          <MainContent selectedResult={selectedResult} />
         </GridItem>
       </Grid>
     </Container>

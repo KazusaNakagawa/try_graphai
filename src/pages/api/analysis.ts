@@ -33,7 +33,7 @@ function getAnalysisResults(outputDir: string, mdFiles: string[]): { file: strin
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const outputDir = path.join(process.cwd(), 'output');
+    const outputDir = path.join(process.cwd(), 'src', 'output');
 
     const mdFiles = getFiles(outputDir, '.md');
     if (mdFiles.length === 0) {
