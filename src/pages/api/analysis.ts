@@ -1,38 +1,46 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import * as fs from 'fs';
 import * as path from 'path';
-import { companyRegex } from '../../components/companyRegex';
+
+
+function getFiles(outputDir: string, extension: string): string[] {
+  const files = fs.readdirSync(outputDir);
+  const targetFiles = files.filter(file => file.endsWith(extension));
+  console.log('file_num', targetFiles.length);
+  if (targetFiles.length === 0) {
+    console.error('No markdown files found in output directory');
+    return [];
+  }
+
+  return targetFiles;
+}
+  
+
+function getAnalysisResults(outputDir: string, mdFiles: string[]): { file: string, company: string, recommendation: string }[] {
+  return mdFiles.map(file => {
+    const content = fs.readFileSync(path.join(outputDir, file), 'utf-8');
+    const companyRegex = /##\s(.+)\s\((.+)\)\s投資推奨/g;
+    const companyMatch = companyRegex.exec(content);
+
+    return {
+      file,
+      company: companyMatch ? companyMatch[1] : '企業名不明',
+      recommendation: content.trim()
+    };
+  });
+}
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const outputDir = path.join(process.cwd(), 'output');
-    const files = fs.readdirSync(outputDir);
+    const outputDir = path.join(process.cwd(), 'src', 'output');
 
-    // .md ファイルだけ取得
-    const mdFiles = files.filter(file => file.endsWith('.md'));
-    console.log('mkfile_num', mdFiles.length);
+    const mdFiles = getFiles(outputDir, '.md');
     if (mdFiles.length === 0) {
-      console.error('No markdown files found in output directory');
       return res.status(404).json({ error: '分析結果が見つかりません' });
     }
 
-    const _companyRegex = companyRegex(['config'], 'view_companies.yaml');
-    // 各ファイルにつき1回だけ解析
-    const results = mdFiles.map(file => {
-      const content = fs.readFileSync(path.join(outputDir, file), 'utf-8');
-      const companyMatch = _companyRegex.exec(content);
-
-      // ファイルごとにレコードを1つだけ作る
-      return {
-        file,
-        company: companyMatch ? companyMatch[0] : '不明な企業',
-        recommendation: content.trim()
-      };
-    });
-
-    // 重複を除きたい場合は Set を使う
-    // ただし「content」がファイルごとに全部違う内容なら不要です
+    const results = getAnalysisResults(outputDir, mdFiles);
     const uniqueResults = Array.from(
       new Set(results.map(r => JSON.stringify(r)))
     ).map(str => JSON.parse(str));

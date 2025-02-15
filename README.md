@@ -31,22 +31,19 @@ OPENAI_API_KEY=your_api_key_here
 
 ## Usage
 
-### Basic Run
-
 ```bash
+# Basic Run
 npm start
-```
 
-### Development Mode (with hot reload)
-
-```bash
+# Development Mode (with hot reload)
 npm run dev
-```
 
-### Build
-
-```bash
+# Build
 npm run build
+
+# Custom Commands
+npm run analyze
+npm run web-display
 ```
 
 ## Configuration Files
@@ -87,13 +84,6 @@ Analysis results are saved in the `output` directory with timestamps, containing
 - Risk assessment
 - Investment recommendations
 
-## Running Specific Commands
-
-```bash
-npx ts-node index.ts analyze
-npx ts-node index.ts web-display
-```
-
 ## Technical Stack
 
 - TypeScript
@@ -106,29 +96,20 @@ npx ts-node index.ts web-display
 
 ```bash
 .
-├── README.md                      
-├── agents                         # Directory for analysis agents
-│   ├── analysis.ts                
-│   ├── prompt                     
-│   └── types.ts                   
-├── commands                       # Directory for CLI commands
-│   ├── analyzeCommand.ts          
-│   └── webDisplayCommand.ts       
-├── config                         # Configuration files
-│   ├── ai_stock_analysis.yaml     
-│   ├── ai_stock_analysis_en.yaml  
-│   └── view_companies.yaml        
-├── index.ts                       # Entry point for the application
-├── next-env.d.ts                  
-├── output                         # Directory for analysis output
-│   └── ...                        
-├── package.json                   
-├── src                            # Source directory for the application
-│   ├── components                 
-│   ├── pages                      
-│   └── styles                     
-├── tsconfig.json                  
-└── yarn.lock                      
+├── README.md
+├── next-env.d.ts
+├── package.json
+├── src
+│  ├── agents      # Directory for analysis agents
+│  ├── commands
+│  ├── components
+│  ├── config
+│  ├── index.ts
+│  ├── output
+│  ├── pages
+│  └── styles
+├── tsconfig.json
+└── yarn.lock
 ```
 
 ## License

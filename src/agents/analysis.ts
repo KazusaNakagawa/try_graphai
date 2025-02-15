@@ -6,6 +6,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { Company, Config, GraphResult } from "./types";
 import { createAnalysisPrompt } from "./prompt/analysis";
+import { createAnalysisReportPrompt } from "./prompt/analysis_report";
 
 
 const config = yaml.load(
@@ -38,46 +39,25 @@ const createStockAnalysisGraph = (company: Company) => ({
         system: "すべての分析データに基づいて、詳細な投資推奨を日本語でMarkdown形式で提供してください。リスクと機会の両面から説明してください:",
       },
       inputs: {
-        prompt: `
-## ${company.name} (${company.ticker}) 投資推奨
-
-### 生成情報
-
-- 生成日時: ${new Date().toLocaleString()}
-- 使用モデル: ${model}
-- バージョン: ${version}
-
-### 投資判断
-- 推奨: [強い買い/買い/中立/売り/強い売り]
-
-### 判断根拠
-
-### 主要なリスク要因
-
-### 成長機会
-
-### 投資家へのアドバイス
-
-データソース: ${company.source}
-`,
+        prompt: createAnalysisReportPrompt(company, model, version),
         analysis: ":company_data.choices.$0.message.content"
       },
     },
   },
 });
 
-
 // メイン実行関数
 const main = async () => {
   const timestamp = new Date().toISOString().replace(/[-:]/g, '').slice(0,14);
-  const outputDir = `${__dirname}/../output`;
+  const outputDir = path.join(__dirname, "../output");
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
-  const outputPath = `${outputDir}/analysis_results_${timestamp}.md`;
-  const writeStream = fs.createWriteStream(outputPath, { flags: 'w' });
-  
+
   for (const company of config.companies) {
+    const outputPath = path.join(outputDir, `analysis_${company.name.toLowerCase()}_${timestamp}.md`);
+    const writeStream = fs.createWriteStream(outputPath, { flags: 'w' });
+
     console.log(`Analyzing ${company.name}...`);
     const graphData = createStockAnalysisGraph(company);
     const graph = new GraphAI(graphData, agents);

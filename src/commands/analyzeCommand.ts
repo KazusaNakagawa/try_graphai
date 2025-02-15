@@ -1,11 +1,13 @@
 import { Command } from 'commander';
-const { exec } = require('child_process');
+import { exec } from 'child_process';
+import * as path from 'path';
 
 const analyzeCommand = new Command('analyze')
   .description('Analyze the data')
   .action(() => {
     console.log('Analyzing data...');
-    exec('ts-node agents/analysis.ts', (err: Error | null, stdout: string, stderr: string) => {
+    const analysisScript = path.join(__dirname, '../agents/analysis.ts');
+    exec(`ts-node ${analysisScript}`, (err: Error | null, stdout: string, stderr: string) => {
       if (err) {
         console.error(`Error: ${err.message}`);
         return;

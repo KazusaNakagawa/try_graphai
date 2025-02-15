@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "analyze": "ts-node src/index.ts analyze",
+    "web-display": "ts-node src/index.ts web-display"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.2.4",
