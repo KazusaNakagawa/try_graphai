@@ -4,10 +4,12 @@ import * as path from 'path';
 
 const analyzeCommand = new Command('analyze')
   .description('Analyze the data')
-  .action(() => {
+  .option('-c, --config <path>', 'path to the configuration file', '../config/test_ai_stock_analysis.yaml')
+  .action((options) => {
     console.log('Analyzing data...');
     const analysisScript = path.join(__dirname, '../agents/analysis.ts');
-    exec(`ts-node ${analysisScript}`, (err: Error | null, stdout: string, stderr: string) => {
+    const configPath = path.resolve(__dirname, options.config);
+    exec(`ts-node ${analysisScript} --config ${configPath}`, (err: Error | null, stdout: string, stderr: string) => {
       if (err) {
         console.error(`Error: ${err.message}`);
         return;

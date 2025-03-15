@@ -42,7 +42,9 @@ npm run dev
 npm run build
 
 # Custom Commands
-npm run analyze
+#  Ex: npm run analyze -c test_ai_stock_analysis.yaml
+npm run analyze -c {config_file}
+
 npm run web-display
 ```
 

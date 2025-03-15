@@ -7,10 +7,16 @@ import * as path from "path";
 import { Company, Config, GraphResult } from "./types";
 import { createAnalysisPrompt } from "./prompt/analysis";
 import { createAnalysisReportPrompt } from "./prompt/analysis_report";
+import { Command } from 'commander';
 
+const program = new Command();
+program.option('-c, --config <path>', 'path to the configuration file', '../config/test_ai_stock_analysis.yaml');
+program.parse(process.argv);
+const options = program.opts();
 
+const configPath = path.resolve(__dirname, options.config);
 const config = yaml.load(
-  fs.readFileSync(path.join(__dirname, "../config", "ai_stock_analysis.yaml"), "utf8")
+  fs.readFileSync(configPath, "utf8")
 ) as Config;
 
 const model = config.metadata.model;

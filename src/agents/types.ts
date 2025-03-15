@@ -36,4 +36,4 @@ interface GraphResult {
   investment_recommendation?: RecommendationResult;
 }
 
-export { Company, AnalysisPoints, Config, GraphResult, Choice, RecommendationResult };
+export type { Company, AnalysisPoints, Config, GraphResult, Choice, RecommendationResult };
