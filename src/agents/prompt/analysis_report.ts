@@ -21,6 +21,8 @@ export const createAnalysisReportPrompt = (company: Company, model: string, vers
 
 ### 投資家へのアドバイス
 
+### 競合他社
+
 データソース: ${company.source}
 `
 ;

@@ -1,9 +1,10 @@
-import { Container, Heading, Grid, GridItem, useToast } from '@chakra-ui/react';
+import { Box, Container, Heading, Grid, GridItem, useToast } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import MainContent from '../components/MainContent';
 
 interface AnalysisResult {
+  file: string;
   company: string;
   recommendation: string;
 }
@@ -20,7 +21,7 @@ export default function Home() {
         const analysisData = data as AnalysisResult[];
         setResults(analysisData);
         if (analysisData.length > 0) {
-          setSelectedCompany(analysisData[0].company);
+          setSelectedCompany(analysisData[0].file);
         }
       })
       .catch(error => {
@@ -34,7 +35,16 @@ export default function Home() {
       });
   }, []);
 
-  const selectedResult = results.find(r => r.company === selectedCompany);
+  useEffect(() => {
+    console.log('selectedCompany:', selectedCompany);
+    console.log('results:', results);
+  }, [selectedCompany, results]);
+
+  const selectedResult = results.find(r => r.file === selectedCompany);
+
+  useEffect(() => {
+    console.log('selectedResult:', selectedResult);
+  }, [selectedResult]);
 
   return (
     <Container maxW="container.xl" py={10}>
