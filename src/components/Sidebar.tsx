@@ -17,10 +17,17 @@ const groupResultsByCompany = (results: { file: string, company: string }[]) => 
     if (match) {
       const company = match[1];
       const date = match[2];
+      // date を日本語に変換
+      const year = date.slice(0, 4);
+      const month = date.slice(4, 6);
+      const day = date.slice(6, 8);
+      const _date: string = `${year}/${month}/${day}`;
+
+      // push で表示      
       if (!groupedResults[company]) {
         groupedResults[company] = [];
       }
-      groupedResults[company].push({ file: result.file, date });
+      groupedResults[company].push({ file: result.file, date:  _date});
     }
   });
 
