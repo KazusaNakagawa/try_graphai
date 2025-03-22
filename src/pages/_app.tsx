@@ -1,6 +1,6 @@
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import type { AppProps } from 'next/app';
-import '../styles/markdown.css';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import type { AppProps } from 'next/app'
+import '../styles/markdown.css'
 
 const theme = extendTheme({
   styles: {
@@ -10,14 +10,14 @@ const theme = extendTheme({
       },
     },
   },
-});
+})
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <Component {...pageProps} />
     </ChakraProvider>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp
