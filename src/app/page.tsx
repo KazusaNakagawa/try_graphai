@@ -1,7 +1,9 @@
+'use client'
+
 import { Container, Heading, Grid, GridItem, useToast } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
-import Sidebar from '../components/Sidebar'
-import MainContent from '../components/MainContent'
+import Sidebar from '@/components/Sidebar'
+import MainContent from '@/components/MainContent'
 
 interface AnalysisResult {
   file: string
