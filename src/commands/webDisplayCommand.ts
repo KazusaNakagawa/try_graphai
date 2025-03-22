@@ -20,18 +20,22 @@ const webDisplayCommand = new Command('web-display')
       },
     )
 
-    serverProcess.stdout.on('data', (data: string) => {
-      const portRegex = /http:\/\/localhost:(\d+)/
-      const portMatch = portRegex.exec(data)
-      if (portMatch) {
-        const port = portMatch[1]
-        console.log(`Listening on http://localhost:${port}`)
-      }
-    })
+    if (serverProcess.stdout) {
+      serverProcess.stdout.on('data', (data: string) => {
+        const portRegex = /http:\/\/localhost:(\d+)/
+        const portMatch = portRegex.exec(data)
+        if (portMatch) {
+          const port = portMatch[1]
+          console.log(`Listening on http://localhost:${port}`)
+        }
+      })
+    }
 
-    serverProcess.stderr.on('data', (data: string) => {
-      console.error(`Stderr: ${data}`)
-    })
+    if (serverProcess.stderr) {
+      serverProcess.stderr.on('data', (data: string) => {
+        console.error(`Stderr: ${data}`)
+      })
+    }
   })
 
 export default webDisplayCommand
