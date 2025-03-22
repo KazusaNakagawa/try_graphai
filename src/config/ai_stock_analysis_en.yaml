@@ -2,8 +2,8 @@ name: AI Stock Analysis
 description: Analyzes AI-related stocks and provides investment insights
 metadata:
   model: gpt-4o-mini
-  version: "1.0"
-  date: "2025/01/18"
+  version: '1.0'
+  date: '2025/01/18'
 
 companies:
   - name: NVIDIA

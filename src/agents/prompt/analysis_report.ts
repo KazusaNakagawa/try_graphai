@@ -1,7 +1,11 @@
-import { Company } from '../types';
+import { Company } from '../types'
 
 // 分析プロンプトの生成関数
-export const createAnalysisReportPrompt = (company: Company, model: string, version: string) => `
+export const createAnalysisReportPrompt = (
+  company: Company,
+  model: string,
+  version: string,
+) => `
 ## ${company.name} (${company.ticker}) 投資推奨
 
 ### 生成情報
@@ -25,4 +29,3 @@ export const createAnalysisReportPrompt = (company: Company, model: string, vers
 
 データソース: ${company.source}
 `
-;

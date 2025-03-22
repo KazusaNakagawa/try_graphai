@@ -7,6 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write .",
     "analyze": "ts-node src/index.ts analyze",
     "web-display": "ts-node src/index.ts web-display"
   },
@@ -16,6 +18,7 @@
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@graphai/agents": "latest",
+    "commander": "^8.0.0",
     "dotenv": "^16.0.3",
     "framer-motion": "^10.18.0",
     "graphai": "^0.6.19",
@@ -24,13 +27,16 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^9.0.3",
-    "remark-gfm": "^4.0.0",
-    "commander": "^8.0.0"
+    "remark-gfm": "^4.0.0"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
     "@types/node": "^18.15.11",
     "@types/react": "^18.2.0",
+    "eslint": "^8",
+    "eslint-config-next": "15.2.3",
+    "eslint-config-prettier": "^10.1.1",
+    "prettier": "^3.5.3",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.4"
