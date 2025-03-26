@@ -1,9 +1,9 @@
-import Box from '@mui/material/Box' // 変更：Chakra UI => MUI
-import Typography from '@mui/material/Typography' // Heading の代替
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import MuiLink from '@mui/material/Link'
-import ChevronRightIcon from '@mui/icons-material/ChevronRight' // 変更：MUI のアイコン
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import React from 'react'
 import NextLink from 'next/link'
 

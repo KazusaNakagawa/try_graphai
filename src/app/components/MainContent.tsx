@@ -1,9 +1,7 @@
-import Box from '@mui/material/Box' // 変更：Chakra UI => MUI
+import Box from '@mui/material/Box'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-
-// Removed unused interface AnalysisResult
 
 interface MainContentProps {
   selectedResult: { recommendation: string } | null

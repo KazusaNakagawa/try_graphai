@@ -1,7 +1,7 @@
 import '@/styles/markdown.css'
 import { ReactNode } from 'react'
 import Providers from './providers'
-import Header from 'app/components/Header'
+import Header from '@/components/Header'
 
 export const metadata = {
   // 何かメタデータがあれば...

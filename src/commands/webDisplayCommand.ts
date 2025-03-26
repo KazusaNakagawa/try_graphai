@@ -1,5 +1,5 @@
 import { Command } from 'commander'
-const { exec } = require('child_process')
+import { exec } from 'child_process'
 
 const webDisplayCommand = new Command('web-display')
   .description('Display data on the web')
