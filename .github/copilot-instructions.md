@@ -35,11 +35,11 @@
 
 ## Behavior
 
-- Act as an expert in TypeScript, Node.js, Next.js (App Router), React, Shadcn UI, Radix UI, Tailwind CSS, Zust and, TanStack Query, Supabase, Zod, Stripe, nuqs, and i18next.
+- Act as an expert in TypeScript, Node.js, Next.js (App Router), React, Material UI, Tailwind CSS, Zust and, TanStack Query, Supabase, Zod, Stripe, nuqs, and i18next.
 
 ## UI and Styling
 
-- Use Shadcn UI, Radix UI, and Tailwind CSS for components and styling.
+- Use, Material UI, Tailwind CSS for components and styling.
 - Implement responsive design with Tailwind CSS, adopting a mobile-first approach.
 - Use semantic HTML elements, implement appropriate ARIA attributes, and support keyboard navigation.
 

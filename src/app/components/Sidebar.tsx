@@ -1,5 +1,9 @@
-import { Box, Heading, List, ListItem, Link } from '@chakra-ui/react'
-import { ChevronRightIcon } from '@chakra-ui/icons'
+import Box from '@mui/material/Box' // 変更：Chakra UI => MUI
+import Typography from '@mui/material/Typography' // Heading の代替
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import MuiLink from '@mui/material/Link'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight' // 変更：MUI のアイコン
 import React from 'react'
 import NextLink from 'next/link'
 
@@ -43,37 +47,41 @@ const Sidebar: React.FC<SidebarProps> = ({
   const groupedResults = groupResultsByCompany(results)
 
   return (
-    <Box position='sticky' top='20px' borderWidth='1px' borderRadius='lg' p={4}>
-      <Heading as='h2' size='md' mb={4}>
+    <Box
+      sx={{ position: 'sticky', top: '20px', border: '1px solid', borderRadius: 2, p: 2 }}
+    >
+      <Typography variant='h6' gutterBottom>
         分析企業一覧
-      </Heading>
-      <List spacing={3}>
+      </Typography>
+      <List>
         {Object.keys(groupedResults).map((company, index) => (
           <React.Fragment key={company}>
-            <ListItem fontWeight='bold'>
+            <ListItem sx={{ fontWeight: 'bold' }}>
               {index + 1}. {company}
             </ListItem>
             {groupedResults[company].map((result) => (
               <ListItem
                 key={result.file}
-                cursor='pointer'
-                bg={selectedCompany === result.file ? 'gray.100' : 'transparent'}
-                p={2}
-                borderRadius='md'
-                _hover={{ bg: 'gray.50' }}
+                sx={{
+                  cursor: 'pointer',
+                  backgroundColor:
+                    selectedCompany === result.file ? 'grey.100' : 'transparent',
+                  p: 1,
+                  borderRadius: 1,
+                  '&:hover': { backgroundColor: 'grey.50' },
+                }}
               >
                 <NextLink href={`/${result.file.replace(/\.md$/, '')}`} passHref>
-                  <Link
-                    display='flex'
-                    alignItems='center'
+                  <MuiLink
+                    sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
                     onClick={(e) => {
                       e.preventDefault()
                       setSelectedCompany(result.file)
                     }}
                   >
-                    <ChevronRightIcon mr={2} />
+                    <ChevronRightIcon sx={{ mr: 1 }} />
                     {result.date}
-                  </Link>
+                  </MuiLink>
                 </NextLink>
               </ListItem>
             ))}
