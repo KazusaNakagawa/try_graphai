@@ -21,9 +21,10 @@
         "name": "next"
       }
     ],
-    "baseUrl": "src/app",
+    "baseUrl": "src/",
     "paths": {
       "@/styles/*": ["styles/*"],
+      "@/agents/*": ["agents/*"],
       "@/components/*": ["components/*"]
     }
   },
