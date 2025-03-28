@@ -24,6 +24,7 @@
     "baseUrl": "src/",
     "paths": {
       "@/styles/*": ["styles/*"],
+      "@/agents/*": ["agents/*"],
       "@/components/*": ["components/*"]
     }
   },

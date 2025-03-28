@@ -1,7 +1,9 @@
 'use client'
 
-import { Container, Heading, Grid, GridItem, useToast } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Grid'
+import React, { useEffect, useState } from 'react'
 import Sidebar from '@/components/Sidebar'
 import MainContent from '@/components/MainContent'
 
@@ -14,7 +16,6 @@ interface AnalysisResult {
 export default function Home() {
   const [results, setResults] = useState<AnalysisResult[]>([])
   const [selectedCompany, setSelectedCompany] = useState<string | null>(null)
-  const toast = useToast()
 
   useEffect(() => {
     fetch('/api/analysis')
@@ -27,15 +28,9 @@ export default function Home() {
         }
       })
       .catch((error) => {
-        toast({
-          title: 'エラーが発生しました',
-          description: error.message,
-          status: 'error',
-          duration: 9000,
-          isClosable: true,
-        })
+        console.error('エラーが発生しました:', error.message)
       })
-  }, [toast])
+  }, [])
 
   useEffect(() => {
     console.log('selectedCompany:', selectedCompany)
@@ -49,23 +44,21 @@ export default function Home() {
   }, [selectedResult])
 
   return (
-    <Container maxW='container.xl' py={10}>
-      <Heading as='h1' size='xl' textAlign='center' mb={10}>
+    <Container maxWidth='xl' sx={{ pt: 10 }}>
+      <Typography variant='h3' align='center' sx={{ my: 4 }}>
         AI株式分析レポート
-      </Heading>
-
-      <Grid templateColumns='250px 1fr' gap={8}>
-        <GridItem>
+      </Typography>
+      <Grid container spacing={4}>
+        <Grid item xs={12} sm={3}>
           <Sidebar
             results={results}
             selectedCompany={selectedCompany}
             setSelectedCompany={setSelectedCompany}
           />
-        </GridItem>
-
-        <GridItem>
+        </Grid>
+        <Grid item xs={12} sm={9}>
           <MainContent selectedResult={selectedResult ?? null} />
-        </GridItem>
+        </Grid>
       </Grid>
     </Container>
   )

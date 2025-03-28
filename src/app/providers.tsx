@@ -1,18 +1,24 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
 
-const theme = extendTheme({
-  styles: {
-    global: {
-      body: {
-        bg: 'gray.51',
-      },
+// グローバルテーマの設定例
+const theme = createTheme({
+  palette: {
+    background: {
+      default: '#fafafa',
     },
   },
+  // 他のテーマ設定も必要に応じて追加
 })
 
 export default function Providers({ children }: { readonly children: ReactNode }) {
-  return <ChakraProvider theme={theme}>{children}</ChakraProvider>
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
+  )
 }

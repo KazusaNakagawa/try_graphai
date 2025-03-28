@@ -1,9 +1,7 @@
-import { Box } from '@chakra-ui/react'
+import Box from '@mui/material/Box'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-
-// Removed unused interface AnalysisResult
 
 interface MainContentProps {
   selectedResult: { recommendation: string } | null
@@ -11,7 +9,7 @@ interface MainContentProps {
 
 const MainContent: React.FC<MainContentProps> = ({ selectedResult }) => {
   return (
-    <Box p={6} borderWidth='1px' borderRadius='lg' boxShadow='md'>
+    <Box sx={{ p: 3, border: '1px solid', borderRadius: 2, boxShadow: 2 }}>
       {selectedResult ? (
         <ReactMarkdown remarkPlugins={[remarkGfm]} className='markdown-content'>
           {selectedResult.recommendation}
